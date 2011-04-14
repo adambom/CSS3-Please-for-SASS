@@ -1,0 +1,82 @@
+@mixin border-radius ($top-left, $top-right: null, $bottom-right: null, $bottom-left: null) {
+	@if $top-right == null {$top-right: $top-left}
+	@if $bottom-right == null {$bottom-right: $top-left}
+	@if $bottom-left == null {$bottom-left: $top-left}
+	
+	/* FF1+ */
+	-moz-border-top-left-radius: $top-left;
+	-moz-border-top-right-radius: $top-right;
+	-moz-border-bottom-right-radius: $bottom-right;
+	-moz-border-bottom-left-radius: $bottom-left;
+
+	/* Saf3-4, iOS 1+, Android 1.5+ */
+	-webkit-border-top-left-radius: $top-left;
+	-webkit-border-top-right-radius: $top-right;
+	-webkit-border-bottom-right-radius: $bottom-right;
+	-webkit-border-bottom-left-radius: $bottom-left;
+
+	/* Opera 10.5, IE9, Saf5, Chrome, FF4 */
+	border-top-left-radius: $top-left;
+	border-top-right-radius: $top-right;
+	border-bottom-right-radius: $bottom-right;
+	border-bottom-left-radius: $bottom-left;
+          
+	/* useful if you don't want a bg color from leaking outside the border: */        
+	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+}
+
+@mixin csstransition ($property, $duration, $easing) {
+	-moz-transition: $property $duration $easing;  /* FF4+ */
+	-o-transition: $property $duration $easing;  /* Opera 10.5+ */
+	-webkit-transition: $property $duration $easing;  /* Saf3.2+, Chrome */
+	-ms-transition: $property $duration $easing;  /* IE10? */
+	transition: $property $duration $easing;  
+}
+@mixin background-size ($bg-size-1, $bg-size-2: null) {
+	@if $bg-size-2 == null {$bg-size-2: $bg-size-1}
+	-moz-background-size: $bg-size-1 $bg-size-2; /* FF3.6 */
+	-webkit-background-size: $bg-size-1 $bg-size-2; /* Saf3-4 */
+	background-size: $bg-size-1 $bg-size-2; /* Opera, IE9, Saf5, Chrome, FF4 */
+}
+
+@mixin rotate($degrees) {
+	-moz-transform: rotate($degrees);  /* FF3.5+ */
+	-o-transform: rotate($degrees);  /* Opera 10.5 */
+	-webkit-transform: rotate($degrees);  /* Saf3.1+, Chrome */
+	-ms-transform: rotate($degrees);  /* IE9 */
+	transform: rotate($degrees);  
+	
+	/* calculate factorials for 3-9 */
+	$twof: 2;
+	$threef: 3*2;
+	$fourf: 4*3*2;
+	$fivef: 5*4*3*2;
+	$sixf: 6*5*4*3*2;
+	$sevenf: 7*6*5*4*3*2;
+	$eightf: 8*7*6*5*4*3*2;
+	$ninef: 9*8*7*6*5*4*3*2;
+	
+	/* Convert from radians to degrees */
+	$pi: 3.1415926535897;
+	$radians: $degrees * $pi / 180;
+	
+	/* Calculate the some exponents - ghetto style! */
+	$x: $radians;
+	$x2: $x * $radians;
+	$x3: $x2 * $radians;
+	$x4: $x3 * $radians;
+	$x5: $x4 * $radians;
+	$x6: $x5 * $radians;
+	$x7: $x6 * $radians;
+	$x8: $x7 * $radians;
+	$x9: $x8 * $radians;
+	
+	
+	$sinx: $x - $x3/$threef + $x5/$fivef - $x7/$sevenf + $x9/$ninef;
+	$cosx: 1.0000000 - $x2/$twof + $x4/$fourf - $x6/$sixf + $x8/$eightf;
+	/* IE6–IE9  */
+    filter: progid:DXImageTransform.Microsoft.Matrix(
+            M11=#{$cosx}, M12=#{-1*$sinx},M21=#{$sinx}, M22=#{$cosx}, sizingMethod='auto expand');
+      zoom: 1;
+}
+
