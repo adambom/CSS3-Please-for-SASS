@@ -40,12 +40,12 @@
 }
 
 @mixin rotate($degrees) {
-	-moz-transform: rotate($degrees);  /* FF3.5+ */
-	-o-transform: rotate($degrees);  /* Opera 10.5 */
-	-webkit-transform: rotate($degrees);  /* Saf3.1+, Chrome */
-	-ms-transform: rotate($degrees);  /* IE9 */
-	transform: rotate($degrees);  
-	
+	-moz-transform: rotate(#{$degrees}deg);  /* FF3.5+ */
+	-o-transform: rotate(#{$degrees}deg);  /* Opera 10.5 */
+	-webkit-transform: rotate(#{$degrees}deg);  /* Saf3.1+, Chrome */
+	-ms-transform: rotate(#{$degrees}deg);  /* IE9 */
+	transform: rotate(#{$degrees}deg);
+
 	/* calculate factorials for 3-9 */
 	$twof: 2;
 	$threef: 3*2;
