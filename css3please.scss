@@ -25,7 +25,7 @@
 	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
 }
 
-@mixin csstransition ($property, $duration, $easing) {
+@mixin transition ($property, $duration, $easing) {
 	-moz-transition: $property $duration $easing;  /* FF4+ */
 	-o-transition: $property $duration $easing;  /* Opera 10.5+ */
 	-webkit-transition: $property $duration $easing;  /* Saf3.2+, Chrome */
@@ -71,12 +71,15 @@
 	$x8: $x7 * $radians;
 	$x9: $x8 * $radians;
 	
-	
 	$sinx: $x - $x3/$threef + $x5/$fivef - $x7/$sevenf + $x9/$ninef;
-	$cosx: 1.0000000 - $x2/$twof + $x4/$fourf - $x6/$sixf + $x8/$eightf;
+	$cosx: 1 - $x2/$twof + $x4/$fourf - $x6/$sixf + $x8/$eightf;
 	/* IE6–IE9  */
     filter: progid:DXImageTransform.Microsoft.Matrix(
             M11=#{$cosx}, M12=#{-1*$sinx},M21=#{$sinx}, M22=#{$cosx}, sizingMethod='auto expand');
       zoom: 1;
 }
-
+@mixin box-shadow() {
+	-moz-box-shadow: 0px 0px 12px #ffffff; /* FF3.5+ */
+	-webkit-box-shadow: 0px 0px 12px #ffffff; /* Saf3.0+, Chrome */
+	box-shadow: 0px 0px 12px #ffffff; /* Opera 10.5, IE9, Chrome 10+ */
+}
