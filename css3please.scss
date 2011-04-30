@@ -114,3 +114,6 @@
             filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$start-color}', EndColorStr='#{$end-color}'); /* IE6–IE9 */
 }
 
+@mixin text-shadow ($offset-left, $offset-right, $blur, $color) {
+	text-shadow: $offset-left $offset-right $blur $color; /* FF3.5+, Opera 9+, Saf1+, Chrome */
+}
