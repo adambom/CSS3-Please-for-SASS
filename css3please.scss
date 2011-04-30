@@ -114,6 +114,3 @@
             filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$start-color}', EndColorStr='#{$end-color}'); /* IE6–IE9 */
 }
 
-#foo {
-    @include gradient(left top, left bottom, #00abeb, #fff);
-}
