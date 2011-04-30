@@ -117,3 +117,25 @@
 @mixin text-shadow ($offset-left, $offset-right, $blur, $color) {
 	text-shadow: $offset-left $offset-right $blur $color; /* FF3.5+, Opera 9+, Saf1+, Chrome */
 }
+
+@mixin font-face ($name, $url, $format, $alt-url1: null, $alt-format1: null, $alt-url2: null, $alt-format2: null) {
+	$src: url($url) format($format);
+	$comma: ", ";
+	
+	@if $alt-url1 != null  {
+		@if $alt-format1 != null {
+			$src: $src #{$comma} url($alt-url1) format($alt-format1);
+		}
+	}
+	
+	@if $alt-url2 != null {
+	    @if $alt-format2 != null {
+	        $src: $src #{$comma} url($alt-url2) format($alt-format2);
+	    }
+	}
+	
+	@font-face {
+		font-family: $name;
+		src: $src;
+	}
+}
