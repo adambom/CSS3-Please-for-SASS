@@ -4,10 +4,10 @@
 	@if $bottom-left == null {$bottom-left: $top-left}
 	
 	/* FF1+ */
-	-moz-border-top-left-radius: $top-left;
-	-moz-border-top-right-radius: $top-right;
-	-moz-border-bottom-right-radius: $bottom-right;
-	-moz-border-bottom-left-radius: $bottom-left;
+	-moz-border-radius-topleft: $top-left;
+	-moz-border-radius-topright: $top-right;
+	-moz-border-radius-bottomright: $bottom-right;
+	-moz-border-radius-bottomleft: $bottom-left;
 
 	/* Saf3-4, iOS 1+, Android 1.5+ */
 	-webkit-border-top-left-radius: $top-left;
@@ -82,4 +82,38 @@
 	-moz-box-shadow: 0px 0px 12px #ffffff; /* FF3.5+ */
 	-webkit-box-shadow: 0px 0px 12px #ffffff; /* Saf3.0+, Chrome */
 	box-shadow: 0px 0px 12px #ffffff; /* Opera 10.5, IE9, Chrome 10+ */
+}
+@mixin gradient ($start-pos, $end-pos, $start-color, $end-color) {
+    $deg-end-pos: null;
+    
+    @if $end-pos == right bottom {
+        $deg-end-pos: 315deg;
+    } @else if $end-pos == left bottom {
+        $deg-end-pos: 225deg;
+    } @else if $end-pos == left top {
+        $deg-end-pos: 135deg;
+    } @else if $end-pos == right top  {
+        $deg-end-pos: 45deg;
+    }
+    
+    background-color: $start-color;
+    background-image: -webkit-gradient(linear, $start-pos, $end-pos, from($start-color), to($end-color)); /* Saf4+, Chrome */
+    
+    @if $deg-end-pos == null {
+        background-image: -o-linear-gradient($start-pos, $start-color, $end-color); /* Opera 11.10+ */
+        background-image: -ms-linear-gradient($start-pos, $start-color, $end-color); /* IE10 */
+        background-image: -moz-linear-gradient($start-pos, $start-color, $end-color); /* FF3.6 */
+        background-image: -webkit-linear-gradient($start-pos, $start-color, $end-color); /* Chrome 10+, Saf5.1+ */
+    } @else {
+        background-image: -o-linear-gradient($start-pos $deg-end-pos, $start-color, $end-color); /* Opera 11.10+ */
+        background-image: -ms-linear-gradient($start-pos $deg-end-pos, $start-color, $end-color); /* IE10 */
+        background-image: -moz-linear-gradient($start-pos $deg-end-pos, $start-color, $end-color); /* FF3.6 */
+        background-image: -webkit-linear-gradient($start-pos $deg-end-pos, $start-color, $end-color); /* Chrome 10+, Saf5.1+ */
+    }
+    background-image: linear-gradient($start-pos, $start-color, $end-color);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$start-color}', EndColorStr='#{$end-color}'); /* IE6–IE9 */
+}
+
+#foo {
+    @include gradient(left top, left bottom, #00abeb, #fff);
 }
