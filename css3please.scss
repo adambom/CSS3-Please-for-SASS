@@ -1,3 +1,55 @@
+@function power ($x, $n) {
+    $ret: 1;
+    
+    @if $n >= 0 {
+        @for $i from 1 through $n {
+            $ret: $ret * $x;
+        } 
+    } @else {
+        @for $i from $n through 0 {
+            $ret: $ret / $x;
+        }
+    }
+    
+    @return $ret;
+}
+
+@function factorial ($x) {
+    $ret: 1;
+    
+    @if $x > 0 {
+        @while $x > 0 {
+            $ret: $ret * $x;
+            
+            $x: $x - 1;
+        }
+    } @else {
+        $ret: 1;
+    }
+    
+    @return $ret;
+}
+
+@function sin ($x) {
+    $ret: 0;
+    
+    @for $n from 0 to 25 {
+        $ret: $ret + power(-1, $n) * power($x, 2 * $n + 1) / factorial(2 * $n + 1);
+    }
+
+    @return $ret;
+}
+
+@function cos ($x) {
+    $ret: 0;
+    
+    @for $n from 0 to 25 {
+        $ret: $ret + power(-1, $n) * power($x, 2 * $n) / factorial(2 * $n);
+    }
+
+    @return $ret;
+}
+
 @mixin border-radius ($top-left, $top-right: null, $bottom-right: null, $bottom-left: null) {
 	@if $top-right == null {$top-right: $top-left}
 	@if $bottom-right == null {$bottom-right: $top-left}
@@ -46,36 +98,16 @@
 	-ms-transform: rotate(#{$degrees}deg);  /* IE9 */
 	transform: rotate(#{$degrees}deg);
 
-	/* calculate factorials for 3-9 */
-	$twof: 2;
-	$threef: 3*2;
-	$fourf: 4*3*2;
-	$fivef: 5*4*3*2;
-	$sixf: 6*5*4*3*2;
-	$sevenf: 7*6*5*4*3*2;
-	$eightf: 8*7*6*5*4*3*2;
-	$ninef: 9*8*7*6*5*4*3*2;
 	
 	/* Convert from radians to degrees */
 	$pi: 3.1415926535897;
 	$radians: $degrees * $pi / 180;
 	
-	/* Calculate the some exponents - ghetto style! */
 	$x: $radians;
-	$x2: $x * $radians;
-	$x3: $x2 * $radians;
-	$x4: $x3 * $radians;
-	$x5: $x4 * $radians;
-	$x6: $x5 * $radians;
-	$x7: $x6 * $radians;
-	$x8: $x7 * $radians;
-	$x9: $x8 * $radians;
-	
-	$sinx: $x - $x3/$threef + $x5/$fivef - $x7/$sevenf + $x9/$ninef;
-	$cosx: 1 - $x2/$twof + $x4/$fourf - $x6/$sixf + $x8/$eightf;
+
 	/* IE6–IE9  */
     filter: progid:DXImageTransform.Microsoft.Matrix(
-            M11=#{$cosx}, M12=#{-1*$sinx},M21=#{$sinx}, M22=#{$cosx}, sizingMethod='auto expand');
+            M11=#{cos($x)}, M12=#{-1*sin($x)},M21=#{sin($x)}, M22=#{cos($x)}, sizingMethod='auto expand');
       zoom: 1;
 }
 @mixin box-shadow($color, $blur, $offset-left: null, $offset-top: null) {

@@ -3,7 +3,8 @@ div {
   width: 100px;
   height: 100px;
   margin: 10px;
-  background-color: #CCC; }
+  background-color: #CCC;
+  top: 0.0; }
 
 .border-radius {
   /* FF1+ */
@@ -58,9 +59,7 @@ div {
   -ms-transform: rotate(45deg);
   /* IE9 */
   transform: rotate(45deg);
-  /* calculate factorials for 3-9 */
   /* Convert from radians to degrees */
-  /* Calculate the some exponents - ghetto style! */
   /* IE6–IE9  */
   filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.707, M12=-0.707,M21=0.707, M22=0.707, sizingMethod='auto expand');
   zoom: 1; }
