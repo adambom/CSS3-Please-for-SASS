@@ -3,8 +3,7 @@ div {
   width: 100px;
   height: 100px;
   margin: 10px;
-  background-color: #CCC;
-  top: 0.0; }
+  background-color: #CCC; }
 
 .border-radius {
   /* FF1+ */
