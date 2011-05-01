@@ -78,10 +78,14 @@
             M11=#{$cosx}, M12=#{-1*$sinx},M21=#{$sinx}, M22=#{$cosx}, sizingMethod='auto expand');
       zoom: 1;
 }
-@mixin box-shadow() {
-	-moz-box-shadow: 0px 0px 12px #ffffff; /* FF3.5+ */
-	-webkit-box-shadow: 0px 0px 12px #ffffff; /* Saf3.0+, Chrome */
-	box-shadow: 0px 0px 12px #ffffff; /* Opera 10.5, IE9, Chrome 10+ */
+@mixin box-shadow($color, $blur, $offset-left: null, $offset-top: null) {
+    
+    @if $offset-left == null { $offset-left: 0px }
+    @if $offset-top == null { $offset-top: 0px }
+    
+	-moz-box-shadow: $offset-left $offset-top $blur $color; /* FF3.5+ */
+	-webkit-box-shadow: $offset-left $offset-top $blur $color; /* Saf3.0+, Chrome */
+	box-shadow: $offset-left $offset-top $blur $color; /* Opera 10.5, IE9, Chrome 10+ */
 }
 @mixin gradient ($start-pos, $end-pos, $start-color, $end-color) {
     $deg-end-pos: null;

@@ -1,0 +1,102 @@
+@charset "UTF-8";
+div {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  background-color: #CCC; }
+
+.border-radius {
+  /* FF1+ */
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  /* Saf3-4, iOS 1+, Android 1.5+ */
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  /* Opera 10.5, IE9, Saf5, Chrome, FF4 */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  /* useful if you don't want a bg color from leaking outside the border: */
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  /* @include border-radius(10px, 5px, 3px, 8px); */ }
+
+.transition {
+  -moz-transition: all 0.5s linear;
+  /* FF4+ */
+  -o-transition: all 0.5s linear;
+  /* Opera 10.5+ */
+  -webkit-transition: all 0.5s linear;
+  /* Saf3.2+, Chrome */
+  -ms-transition: all 0.5s linear;
+  /* IE10? */
+  transition: all 0.5s linear; }
+
+.background-size {
+  -moz-background-size: 80% 80%;
+  /* FF3.6 */
+  -webkit-background-size: 80% 80%;
+  /* Saf3-4 */
+  background-size: 80% 80%;
+  /* Opera, IE9, Saf5, Chrome, FF4 */
+  background-image: url("http://cdn.tripwiremagazine.com/wp-content/uploads/2010/04/CSS3.jpg");
+  background-repeat: no-repeat; }
+
+.rotate {
+  -moz-transform: rotate(45deg);
+  /* FF3.5+ */
+  -o-transform: rotate(45deg);
+  /* Opera 10.5 */
+  -webkit-transform: rotate(45deg);
+  /* Saf3.1+, Chrome */
+  -ms-transform: rotate(45deg);
+  /* IE9 */
+  transform: rotate(45deg);
+  /* calculate factorials for 3-9 */
+  /* Convert from radians to degrees */
+  /* Calculate the some exponents - ghetto style! */
+  /* IE6–IE9  */
+  filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.707, M12=-0.707,M21=0.707, M22=0.707, sizingMethod='auto expand');
+  zoom: 1; }
+
+.box-shadow {
+  -moz-box-shadow: 0px 0px 10px black;
+  /* FF3.5+ */
+  -webkit-box-shadow: 0px 0px 10px black;
+  /* Saf3.0+, Chrome */
+  box-shadow: 0px 0px 10px black;
+  /* Opera 10.5, IE9, Chrome 10+ */
+  /* @include box-shadow(#000, 10px, 5px, 5px); */ }
+
+.gradient {
+  background-color: red;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(red), to(blue));
+  /* Saf4+, Chrome */
+  background-image: -o-linear-gradient(left top 315deg, red, blue);
+  /* Opera 11.10+ */
+  background-image: -ms-linear-gradient(left top 315deg, red, blue);
+  /* IE10 */
+  background-image: -moz-linear-gradient(left top 315deg, red, blue);
+  /* FF3.6 */
+  background-image: -webkit-linear-gradient(left top 315deg, red, blue);
+  /* Chrome 10+, Saf5.1+ */
+  background-image: linear-gradient(left top, red, blue);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='red', EndColorStr='blue');
+  /* IE6–IE9 */ }
+
+.text-shadow {
+  text-shadow: 1px 1px 2px red;
+  /* FF3.5+, Opera 9+, Saf1+, Chrome */ }
+
+@font-face {
+  font-family: "Delicious";
+  src: url("path-to-font/delicious.otf") format("otf"); }
+
+.font-face {
+  font-family: "Delicious"; }

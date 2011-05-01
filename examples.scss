@@ -1,0 +1,44 @@
+@import "css3please";
+
+div {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    background-color: #CCC;
+}
+
+.border-radius {
+    @include border-radius(10px);
+    /* @include border-radius(10px, 5px, 3px, 8px); */
+}
+
+.transition {
+    @include transition(all, .5s, linear);
+}
+
+.background-size {
+    @include background-size(80%, 80%);
+    background-image: url("http://cdn.tripwiremagazine.com/wp-content/uploads/2010/04/CSS3.jpg");
+    background-repeat: no-repeat;
+}
+.rotate {
+    @include rotate(45);
+}
+
+.box-shadow {
+    @include box-shadow(#000, 10px);
+    /* @include box-shadow(#000, 10px, 5px, 5px); */
+}
+
+.gradient {
+    @include gradient(left top, right bottom, red, blue)
+}
+
+.text-shadow {
+    @include text-shadow(1px, 1px, 2px, red)
+}
+
+@include font-face("Delicious", "path-to-font/delicious.otf", "otf");
+.font-face {
+    font-family: "Delicious";
+}
