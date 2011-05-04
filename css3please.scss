@@ -77,6 +77,15 @@
 	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
 }
 
+@mixin opacity ($opacity) {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$opacity*100})";
+    filter: alpha(opacity=$opacity*100);
+    -moz-opacity:$opacity;
+    -khtml-opacity: $opacity;
+    -webkit-opacity: $opacity;
+    opacity: $opacity;
+}
+
 @mixin transition ($property, $duration, $easing) {
 	-moz-transition: $property $duration $easing;  /* FF4+ */
 	-o-transition: $property $duration $easing;  /* Opera 10.5+ */
