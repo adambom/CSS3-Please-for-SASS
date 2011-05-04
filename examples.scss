@@ -31,11 +31,15 @@ div {
 }
 
 .gradient {
-    @include gradient(left top, right bottom, red, blue)
+    @include gradient(left top, right bottom, red, blue);
 }
 
 .text-shadow {
-    @include text-shadow(1px, 1px, 2px, red)
+    @include text-shadow(1px, 1px, 2px, red);
+}
+
+.opacity {
+    @include opacity(.4);
 }
 
 @include font-face("Delicious", "path-to-font/delicious.otf", "otf");

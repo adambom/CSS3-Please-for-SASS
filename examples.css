@@ -92,6 +92,14 @@ div {
   text-shadow: 1px 1px 2px red;
   /* FF3.5+, Opera 9+, Saf1+, Chrome */ }
 
+.opacity {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+  filter: alpha(opacity=40);
+  -moz-opacity: 0.4;
+  -khtml-opacity: 0.4;
+  -webkit-opacity: 0.4;
+  opacity: 0.4; }
+
 @font-face {
   font-family: "Delicious";
   src: url("path-to-font/delicious.otf") format("otf"); }
